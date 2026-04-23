@@ -1,3 +1,6 @@
+
+let db = new Localbase('otakuQuizDB');
+
 /* ------------------ PLAYER NAME ------------------ */
 let playerName = "";
 function saveName() {
@@ -190,32 +193,38 @@ function saveToLeaderboard() {
         name: playerName,
         score: score,
         time: speedrun ? timeLeft : null,
-        date: new Date().toLocaleDateString()
+        difficulty: currentDifficulty,
+        date: new Date().toISOString()
     };
 
-    let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
-    board.push(entry);
-
-    board.sort((a, b) => b.score - a.score);
-
-    board = board.slice(0, 10);
-
-    localStorage.setItem("leaderboard", JSON.stringify(board));
+    db.collection('leaderboard').add(entry);
 }
+
 
 function showLeaderboard() {
-    const board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
     const list = document.getElementById("leaderboardList");
 
-    list.innerHTML = "";
+    db.collection('leaderboard').get().then(entries => {
 
-    board.forEach((e, i) => {
-        const div = document.createElement("div");
-        div.className = "leaderboard-entry";
-        div.textContent = `${i + 1}. ${e.name} — Score: ${e.score} ${e.time !== null ? " | Time: " + e.time : ""}`;
-        list.appendChild(div);
+        // Sort by score (descending)
+        entries.sort((a, b) => b.score - a.score);
+
+        // Keep top 10
+        entries = entries.slice(0, 10);
+
+        list.innerHTML = "";
+
+        entries.forEach((e, i) => {
+            const div = document.createElement("div");
+            div.className = "leaderboard-entry";
+            div.textContent =
+                `${i + 1}. ${e.name} — Score: ${e.score} ` +
+                `${e.time !== null ? "| Time: " + e.time : ""} ` +
+                `| ${e.difficulty}`;
+            list.appendChild(div);
+        });
     });
+}
 
     showLeaderboard();
-}
 
