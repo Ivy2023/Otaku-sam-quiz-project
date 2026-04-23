@@ -17,6 +17,8 @@ It includes:
 
 🧠 Multiple Difficulty Levels
 
+![image alt](https://github.com/Ivy2023/Otaku-sam-quiz-project/blob/71699e24ff8ebe2f67420dbddca4df61e516702c/questions%20with%20image%20and%20time%20remain%20.png)
+
 🖼 Custom Anime Images per Question
 
 💾 LocalStorage Save System
