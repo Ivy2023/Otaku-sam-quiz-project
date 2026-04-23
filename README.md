@@ -13,6 +13,8 @@ It includes:
 
 🎞 Smooth Fade Animations
 
+![image alt](https://github.com/Ivy2023/Otaku-sam-quiz-project/blob/bf6b3f70d422fe16d5b76c282a6abaec7c520402/Dificulty%20Levels%20.png)
+
 🧠 Multiple Difficulty Levels
 
 🖼 Custom Anime Images per Question
