@@ -22,3 +22,11 @@ It includes:
 📱 Responsive & Accessible UI
 
 This project is designed for learning, fun, and showcasing front‑end development s
+
+Validator Testing
+HTML
+No errors were returned when passing through the official W3C validator
+CSS
+No errors were found when passing through the official (Jigsaw) validator
+JavaScript
+No errors were found when passing through the official Jshint validator
