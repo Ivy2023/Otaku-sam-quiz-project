@@ -5,6 +5,8 @@
 Otaku Quiz Game is a fast‑paced anime trivia speedrun game built with HTML, CSS, and JavaScript.
 It includes:
 
+![image alt](https://github.com/Ivy2023/Otaku-sam-quiz-project/blob/6087954f59f033902aac9af6fa180b766b2e76e8/player%20name%20input.png)
+
 ⏱ Speedrun Mode Only (60‑second challenge)
 
 👤 Player Name Input
