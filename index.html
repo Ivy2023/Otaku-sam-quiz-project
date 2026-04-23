@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otaku G5ux-sam Quiz Game</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+<div class="container show" id="container">
+
+    <h1>Otaku G5ux-sam Quiz Game</h1>
+
+    <!-- PLAYER NAME SCREEN -->
+    <div id="nameScreen">
+        <input id="playerName" placeholder="Enter your name">
+        <button  onclick="saveName()">Continue</button>
+    </div>
+
+
+    <!-- DIFFICULTY SELECT -->
+    <div id="difficultySelect" style="display:none;">
+        <button class="difficulty-btn" onclick="startGame('easy')">Easy</button>
+        <button class="difficulty-btn" onclick="startGame('medium')">Medium</button>
+        <button class="difficulty-btn" onclick="startGame('hard')">Hard</button>
+    </div>
+
+    <!-- TIMER + SCORE -->
+    <div id="timer">Time: 60</div>
+    <div id="score">Score: 0</div>
+
+    <!-- QUIZ -->
+    <div id="quiz" style="display:none;">
+        <img id="questionImg" class="question-img" alt="">
+        <p id="question" class="question"></p>
+        <div id="answers" class="answers"></div>
+        <button  id="nextBtn">Next Question</button>
+        <button  id="restartBtn">Restart</button>
+    </div>
+
+    <!-- LEADERBOARD -->
+    <div id="leaderboard" style="display:none;">
+        <h2>Leaderboard</h2>
+        <div id="leaderboardList" ></div>
+    </div>
+
+</div>
+<script src="assets/js/index.js"></script>
+
+</body>
+</html>

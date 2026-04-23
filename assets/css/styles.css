@@ -1,0 +1,120 @@
+    :root {
+        --bg: #0d0d0d;
+        --card: #1a1a1a;
+        --accent: #ff4ecb;
+        --accent-light: #ff8fe0;
+        --text: #ffffff;
+        --wrong: #ff4e4e;
+        --correct: #4eff7b;
+        --focus: #ffd447;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        width: 100%;
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(255, 78, 203, 0.3);
+    }
+
+    h1 {
+        text-align: center;
+        color: var(--accent-light);
+        margin-bottom: 10px;
+    }
+
+    #score {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+        color: var(--accent-light);
+    }
+
+    .difficulty-btn {
+        padding: 15px;
+        background: #262626;
+        color: var(--text);
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .difficulty-btn:hover,
+    .difficulty-btn:focus {
+         border-color: var(--accent);
+        outline: none;
+        background: #333;
+    
+    }
+
+    .question-img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .question {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .answers {
+        display: grid;
+        gap: 12px;
+    }
+
+    button.answer {
+        padding: 15px;
+        background: #262626;
+        color: var(--text);
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button.answer:hover,
+    button.answer:focus {
+        border-color: var(--accent);
+        outline: none;
+        background: #333;
+    }
+
+    button.correct {
+        background: var(--correct) !important;
+        color: #000;
+    }
+
+    button.wrong {
+        background: var(--wrong) !important;
+    }
+
+    .nextBtn {
+        padding: 15px;
+        background: #262626;
+        color: var(--text);
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .nextBtn:hover, .nextBtn:focus {
+         border-color: var(--accent);
+        outline: none;
+        background: #333;
+    }
