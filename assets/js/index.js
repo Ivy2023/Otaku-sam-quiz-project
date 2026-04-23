@@ -197,34 +197,43 @@ function saveToLeaderboard() {
         date: new Date().toISOString()
     };
 
-    db.collection('leaderboard').add(entry);
+    let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+    board.push(entry);
+
+    // Sort by score
+    board.sort((a, b) => b.score - a.score);
+
+    // Keep top 10
+    board = board.slice(0, 10);
+
+    localStorage.setItem("leaderboard", JSON.stringify(board));
 }
 
 
 function showLeaderboard() {
     const list = document.getElementById("leaderboardList");
 
-    db.collection('leaderboard').get().then(entries => {
+    let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
 
-        // Sort by score (descending)
-        entries.sort((a, b) => b.score - a.score);
+    if (board.length === 0) {
+        list.innerHTML = "<p>No scores yet</p>";
+        return;
+    }
 
-        // Keep top 10
-        entries = entries.slice(0, 10);
+    list.innerHTML = "";
 
-        list.innerHTML = "";
-
-        entries.forEach((e, i) => {
-            const div = document.createElement("div");
-            div.className = "leaderboard-entry";
-            div.textContent =
-                `${i + 1}. ${e.name} — Score: ${e.score} ` +
-                `${e.time !== null ? "| Time: " + e.time : ""} ` +
-                `| ${e.difficulty}`;
-            list.appendChild(div);
-        });
+    board.forEach((e, i) => {
+        const div = document.createElement("div");
+        div.className = "leaderboard-entry";
+        div.textContent =
+            `${i + 1}. ${e.name} — Score: ${e.score} ` +
+            `${e.time !== null ? "| Time: " + e.time : ""} ` +
+            `| ${e.difficulty}`;
+        list.appendChild(div);
     });
 }
+
 
     showLeaderboard();
 
