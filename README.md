@@ -79,3 +79,10 @@ No errors were found when passing through the official (Jigsaw) validator
 JavaScript
 
 No errors were found when passing through the official Jshint validator
+There are 22 functions in this file.
+
+Function with the largest signature take 2 arguments, while the median is 0.
+
+Largest function has 10 statements in it, while the median is 4.
+
+The most complex function has a cyclomatic complexity value of 4 while the median is 1.
