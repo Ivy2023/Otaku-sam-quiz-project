@@ -5,16 +5,27 @@ let db = new Localbase('otakuQuizDB');
 let playerName = "";
 function saveName() {
     const input = document.getElementById("playerName").value.trim();
-    if (!input) return alert("Enter a name first");
 
-    const board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
-    const exists = board.some(entry => entry.name.toLowerCase() === input.toLowerCase());
-    if (exists) {
-        alert("This name is already taken. Choose another.");
+    if (!input) {
+        alert("Enter a name first");
         return;
     }
+
+    // Load leaderboard from LocalStorage
+    let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+    // Check if name already exists
+    const nameExists = board.some(entry => entry.name.toLowerCase() === input.toLowerCase());
+
+    if (nameExists) {
+        alert("This name already exists. Please choose another.");
+        return;
+    }
+
+    // Save name
     playerName = input;
     localStorage.setItem("playerName", playerName);
+
     fadeTo("nameScreen", "difficultySelect");
 }
 
