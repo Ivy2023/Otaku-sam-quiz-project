@@ -1,5 +1,5 @@
 
-let db = new Localbase('otakuQuizDB');
+
 
 /* ------------------ PLAYER NAME ------------------ */
 let playerName = "";
