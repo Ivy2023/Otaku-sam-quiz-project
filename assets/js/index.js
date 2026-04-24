@@ -12,7 +12,7 @@ function saveName() {
     }
 
     // Load leaderboard from LocalStorage
-    let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+    
 
     // Check if name already exists
     const nameExists = board.some(entry => entry.name.toLowerCase() === input.toLowerCase());
@@ -199,52 +199,5 @@ function gameOver(message) {
 document.getElementById("restartBtn").onclick = () => location.reload();
 
 /* ------------------ LEADERBOARD ------------------ */
-function saveToLeaderboard() {
-    const entry = {
-        name: playerName,
-        score: score,
-        time: speedrun ? timeLeft : null,
-        difficulty: currentDifficulty,
-        date: new Date().toISOString()
-    };
 
-    let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
-
-    board.push(entry);
-
-    // Sort by score
-    board.sort((a, b) => b.score - a.score);
-
-    // Keep top 10
-    board = board.slice(0, 10);
-
-    localStorage.setItem("leaderboard", JSON.stringify(board));
-}
-
-
-function showLeaderboard() {
-    const list = document.getElementById("leaderboardList");
-
-    let board = JSON.parse(localStorage.getItem("leaderboard") || "[]");
-
-    if (board.length === 0) {
-        list.innerHTML = "<p>No scores yet</p>";
-        return;
-    }
-
-    list.innerHTML = "";
-
-    board.forEach((e, i) => {
-        const div = document.createElement("div");
-        div.className = "leaderboard-entry";
-        div.textContent =
-            `${i + 1}. ${e.name} — Score: ${e.score} ` +
-            `${e.time !== null ? "| Time: " + e.time : ""} ` +
-            `| ${e.difficulty}`;
-        list.appendChild(div);
-    });
-}
-
-
-    showLeaderboard();
 
