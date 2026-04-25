@@ -1,6 +1,4 @@
 
-
-
 /* ------------------ PLAYER NAME ------------------ */
 let playerName = "";
 function saveName() {
@@ -12,7 +10,7 @@ function saveName() {
     }
 
     // Load leaderboard from LocalStorage
-    
+const board = JSON.parse(localStorage.getItem("leaderboard")) || [];
 
     // Check if name already exists
     const nameExists = board.some(entry => entry.name.toLowerCase() === input.toLowerCase());
@@ -28,7 +26,6 @@ function saveName() {
 
     fadeTo("nameScreen", "difficultySelect");
 }
-
 
 /* ------------------ ANIMATION ------------------ */
 function fadeTo(hideId, showId) {
@@ -194,10 +191,77 @@ function gameOver(message) {
     showLeaderboard();
 
     document.getElementById("restartBtn").style.display = "block";
+    document.getElementById("restartBtn").onclick = () => location.reload();
 }
 
-document.getElementById("restartBtn").onclick = () => location.reload();
-
 /* ------------------ LEADERBOARD ------------------ */
+function saveToLeaderboard() {
+    const board = JSON.parse(localStorage.getItem("leaderboard")) || [];
 
+    board.push({
+        name: playerName,
+        score: score,
+        total: currentQuestions.length,
+        time: speedrun ? (60 - timeLeft) : null,
+        date: new Date().toLocaleDateString()
+    });
+
+    // Sort by score descending, then by time ascending (faster = better)
+    board.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (a.time !== null && b.time !== null) return a.time - b.time;
+        return 0;
+    });
+
+    // Keep only top 10
+    if (board.length > 10) board.length = 10;
+
+    localStorage.setItem("leaderboard", JSON.stringify(board));
+}
+function showLeaderboard() {
+    const board = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    const container = document.getElementById("leaderboard");
+
+    if (!container) return;
+
+    container.style.display = "block";
+
+    if (board.length === 0) {
+        container.innerHTML = "<h2>Leaderboard</h2><p>No scores yet!</p>";
+        return;
+    }
+
+    let html = `
+        <h2>🏆 Leaderboard</h2>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    board.forEach((entry, index) => {
+        const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : `${index + 1}`;
+        const isCurrentPlayer = entry.name === playerName && entry.score === score;
+
+        html += `
+            <tr class="${isCurrentPlayer ? 'highlight' : ''}">
+                <td>${medal}</td>
+                <td>${entry.name}</td>
+                <td>${entry.score}/${entry.total}</td>
+                <td>${entry.time !== null ? entry.time + "s" : "—"}</td>
+                <td>${entry.date}</td>
+            </tr>
+        `;
+    });
+
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+}
 
