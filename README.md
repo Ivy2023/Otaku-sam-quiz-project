@@ -59,7 +59,6 @@ A progress indicator shows the current question number.
 
 ### 4. Immediate Answer Feedback
 
-![Answer feedback showing correct and wrong](docs/screenshots/feedback.png)
 
 After selecting an answer, the correct answer is highlighted in green. If the
 user chose incorrectly, their answer turns red and the correct answer is
@@ -67,14 +66,12 @@ revealed with a green border. A text message confirms whether the answer was
 correct or wrong.
 
 ### 5. Local Leaderboard
-![Leaderboard table](docs/screenshots/leaderboard.png)
 
 Scores are saved to the browser's localStorage. The top 10 scores are displayed
 in a table ranked by score (and then by completion time). The current player's
 entry is highlighted in gold. Medal emojis mark the top three positions.
 
 ### 6. Responsive Design
-![Mobile view of the quiz](docs/screenshots/responsive.png)
 
 The application adapts to all screen sizes using CSS media queries at 768px and
 480px breakpoints. The leaderboard table is horizontally scrollable on small
