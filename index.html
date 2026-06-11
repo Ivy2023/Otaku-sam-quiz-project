@@ -1,50 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Otaku G5ux-sam Quiz Game</title>
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otaku G5ux-sam Quiz Game</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body>
-<div class="container show" id="container">
+  <div class="container" id="container">
+    <header>
+      <h1>Otaku G5ux-sam Quiz Game</h1>
+      <p class="tagline">Anime image quiz with speedrun mode and local leaderboard</p>
+    </header>
 
-    <h1>Otaku G5ux-sam Quiz Game</h1>
+    <main>
+      <!-- PLAYER NAME SCREEN -->
+      <section id="nameScreen" aria-labelledby="nameHeading">
+        <h2 id="nameHeading">Enter your player name</h2>
+        <label for="playerName">Player name</label>
+        <input id="playerName" name="playerName" placeholder="e.g. G5ux-sam" aria-required="true">
+        <button type="button" onclick="saveName()">Continue</button>
+      </section>
 
-    <!-- PLAYER NAME SCREEN -->
-    <div id="nameScreen">
-        <input id="playerName" placeholder="Enter your name">
-        <button  onclick="saveName()">Continue</button>
-    </div>
+      <!-- DIFFICULTY SELECT -->
+      <section id="difficultySelect" aria-labelledby="difficultyHeading" style="display:none;">
+        <h2 id="difficultyHeading">Choose difficulty</h2>
+        <div class="difficulty-group" role="group" aria-label="Difficulty selection">
+          <button class="difficulty-btn" type="button" onclick="startGame('easy')">Easy</button>
+          <button class="difficulty-btn" type="button" onclick="startGame('medium')">Medium</button>
+          <button class="difficulty-btn" type="button" onclick="startGame('hard')">Hard</button>
+        </div>
+      </section>
 
+      <!-- QUIZ -->
+      <section id="quiz" aria-live="polite" style="display:none;">
+        <div class="status-bar">
+          <p id="timer" aria-label="Time remaining">Time: 60</p>
+          <p id="score" aria-label="Current score">Score: 0</p>
+        </div>
 
-    <!-- DIFFICULTY SELECT -->
-    <div id="difficultySelect" style="display:none;">
-        <button class="difficulty-btn" onclick="startGame('easy')">Easy</button>
-        <button class="difficulty-btn" onclick="startGame('medium')">Medium</button>
-        <button class="difficulty-btn" onclick="startGame('hard')">Hard</button>
-    </div>
+        <figure>
+          <img id="questionImg" class="question-img" alt="">
+          <figcaption id="question" class="question"></figcaption>
+        </figure>
 
-    <!-- TIMER + SCORE -->
-    <div id="timer">Time: 60</div>
-    <div id="score">Score: 0</div>
+        <p id="feedback" class="visually-hidden" aria-live="polite"></p>
 
-    <!-- QUIZ -->
-    <div id="quiz" style="display:none;">
-        <img id="questionImg" class="question-img" alt="" src="1">
-        <p id="question" class="question"></p>
-        <div id="answers" class="answers"></div>
-        <button  id="nextBtn">Next Question</button>
-        <button  id="restartBtn">Restart</button>
-    </div>
+        <div id="answers" class="answers" role="list"></div>
 
-    <!-- LEADERBOARD -->
-    <div id="leaderboard" style="display:none;">
-        <h2>Leaderboard</h2>
-        <ul id="leaderboardList"></ul>
-    </div>
-</div>
-<script src="assets/js/index.js"></script>
+        <div class="controls">
+          <button id="nextBtn" class="nextBtn" type="button" style="display:none;">Next question</button>
+          <button id="restartBtn" class="nextBtn" type="button" style="display:none;">Restart</button>
+        </div>
+      </section>
+
+      <!-- LEADERBOARD -->
+      <section id="leaderboard" aria-labelledby="leaderboardHeading" style="display:none;">
+        <h2 id="leaderboardHeading">Leaderboard</h2>
+        <!-- Table injected by JavaScript -->
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Otaku G5ux-sam Quiz Game</p>
+      <p>
+        Source on
+        <a href="https://github.com/your-username/otaku-g5ux-sam-quiz" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="assets/js/index.js"></script>
 </body>
 </html>
+
