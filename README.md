@@ -35,7 +35,8 @@ delivering a polished, accessible, and responsive user experience.
 
 ### 1. Player Name Entry
 
-![image alt](https://github.com/Ivy2023/Otaku-sam-quiz-project/blob/6087954f59f033902aac9af6fa180b766b2e76e8/player%20name%20input.png)
+<img width="658" height="471" alt="pp2 player name entry" src="https://github.com/user-attachments/assets/5944a8fe-5028-4db3-b2d6-f2a3e084db27" />
+
 
 Users enter a unique player name before starting the quiz. Input validation ensures
 names are between 2 and 20 characters and are not duplicated on the leaderboard.
@@ -43,7 +44,8 @@ Inline error messages guide the user if input is invalid.
 
 ### 2. Difficulty Selection
 
-![image alt](https://github.com/Ivy2023/Otaku-sam-quiz-project/blob/bf6b3f70d422fe16d5b76c282a6abaec7c520402/Dificulty%20Levels%20.png)
+<img width="658" height="372" alt="pp2 dificulty secction" src="https://github.com/user-attachments/assets/47455b8b-0319-47ff-82e8-a67900f060c2" />
+
 
 Three difficulty levels — Easy, Medium, and Hard — allow players to choose a
 challenge appropriate to their anime knowledge. A back button allows users to
@@ -51,25 +53,28 @@ return to the name screen.
 
 ### 3. Speedrun Quiz with Timer
 
-![image alt](https://github.com/Ivy2023/Otaku-sam-quiz-project/blob/71699e24ff8ebe2f67420dbddca4df61e516702c/questions%20with%20image%20and%20time%20remain%20.png)
-
 Each quiz round consists of 10 randomised questions with a 60-second countdown
 timer. The timer turns red and pulses when 10 seconds remain, creating urgency.
 A progress indicator shows the current question number.
 
 ### 4. Immediate Answer Feedback
 
-
 After selecting an answer, the correct answer is highlighted in green. If the
 user chose incorrectly, their answer turns red and the correct answer is
 revealed with a green border. A text message confirms whether the answer was
 correct or wrong.
+
+<img width="779" height="885" alt="pp2 timer and feedback" src="https://github.com/user-attachments/assets/ed7b8710-c273-452d-815b-9b0005db3bff" />
+
 
 ### 5. Local Leaderboard
 
 Scores are saved to the browser's localStorage. The top 10 scores are displayed
 in a table ranked by score (and then by completion time). The current player's
 entry is highlighted in gold. Medal emojis mark the top three positions.
+
+<img width="735" height="625" alt="pp2 local leaderboard" src="https://github.com/user-attachments/assets/9ec87a41-1091-46cd-932d-ec192adf262b" />
+
 
 ### 6. Responsive Design
 
