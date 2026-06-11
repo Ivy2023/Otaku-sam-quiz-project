@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Otaku G5ux-sam Quiz Game - Test your anime knowledge across easy, medium and hard difficulty levels with a speedrun timer and local leaderboard.">
   <title>Otaku G5ux-sam Quiz Game</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -14,61 +15,73 @@
     </header>
 
     <main>
-      <!-- PLAYER NAME SCREEN -->
+      <!-- NAME ENTRY SCREEN -->
       <section id="nameScreen" aria-labelledby="nameHeading">
-        <h2 id="nameHeading">Enter your player name</h2>
-        <label for="playerName">Player name</label>
-        <input id="playerName" name="playerName" placeholder="e.g. G5ux-sam" aria-required="true">
-        <button type="button" onclick="saveName()">Continue</button>
+        <h2 id="nameHeading">Enter Your Player Name</h2>
+        <label for="playerNameInput">Player name</label>
+        <input
+          id="playerNameInput"
+          name="playerName"
+          type="text"
+          maxlength="20"
+          placeholder="e.g. G5ux-sam"
+          autocomplete="off"
+          aria-required="true"
+        >
+        <p id="nameError" class="error-msg" role="alert" aria-live="polite"></p>
+        <button class="primary-btn" type="button" id="continueBtn">Continue</button>
       </section>
 
-      <!-- DIFFICULTY SELECT -->
+      <!-- DIFFICULTY SELECT SCREEN -->
       <section id="difficultySelect" aria-labelledby="difficultyHeading" style="display:none;">
-        <h2 id="difficultyHeading">Choose difficulty</h2>
+        <h2 id="difficultyHeading">Choose Difficulty</h2>
+        <p>Select a difficulty level to begin the quiz.</p>
         <div class="difficulty-group" role="group" aria-label="Difficulty selection">
-          <button class="difficulty-btn" type="button" onclick="startGame('easy')">Easy</button>
-          <button class="difficulty-btn" type="button" onclick="startGame('medium')">Medium</button>
-          <button class="difficulty-btn" type="button" onclick="startGame('hard')">Hard</button>
+          <button class="difficulty-btn" type="button" data-level="easy">Easy</button>
+          <button class="difficulty-btn" type="button" data-level="medium">Medium</button>
+          <button class="difficulty-btn" type="button" data-level="hard">Hard</button>
         </div>
+        <button class="secondary-btn back-btn" type="button" id="backToNameBtn">Back</button>
       </section>
 
-      <!-- QUIZ -->
+      <!-- QUIZ SCREEN -->
       <section id="quiz" aria-live="polite" style="display:none;">
         <div class="status-bar">
           <p id="timer" aria-label="Time remaining">Time: 60</p>
+          <p id="progress" aria-label="Question progress">Question 1 of 10</p>
           <p id="score" aria-label="Current score">Score: 0</p>
         </div>
 
         <figure>
-          <img id="questionImg" class="question-img" alt="">
-          <figcaption id="question" class="question"></figcaption>
+          <img
+            id="questionImg"
+            class="question-img"
+            src=""
+            alt="Anime quiz image"
+          >
+          <figcaption class="visually-hidden" id="imgCaption">Image related to the current quiz question</figcaption>
         </figure>
 
-        <p id="feedback" class="visually-hidden" aria-live="polite"></p>
+        <h3 id="question" class="question"></h3>
 
-        <div id="answers" class="answers" role="list"></div>
+        <p id="feedback" class="feedback-msg" role="alert" aria-live="polite"></p>
+
+        <div id="answers" class="answers" role="group" aria-label="Answer choices"></div>
 
         <div class="controls">
-          <button id="nextBtn" class="nextBtn" type="button" style="display:none;">Next question</button>
-          <button id="restartBtn" class="nextBtn" type="button" style="display:none;">Restart</button>
+          <button id="nextBtn" class="primary-btn" type="button" style="display:none;">Next Question</button>
+          <button id="restartBtn" class="primary-btn" type="button" style="display:none;">Play Again</button>
         </div>
       </section>
 
-      <!-- LEADERBOARD -->
+      <!-- LEADERBOARD SCREEN -->
       <section id="leaderboard" aria-labelledby="leaderboardHeading" style="display:none;">
         <h2 id="leaderboardHeading">Leaderboard</h2>
-        <!-- Table injected by JavaScript -->
       </section>
     </main>
 
     <footer>
-      <p>© 2026 Otaku G5ux-sam Quiz Game</p>
-      <p>
-        Source on
-        <a href="https://github.com/your-username/otaku-g5ux-sam-quiz" target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
-      </p>
+      <p>&copy; 2026 Otaku G5ux-sam Quiz Game</p>
     </footer>
   </div>
 
